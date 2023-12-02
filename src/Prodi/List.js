@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios"
 const List=()=>{
-    const [fakultas, setfakultas] = useState([])
+    const [prodi, setprodi] = useState([])
 
     useEffect(() => {
-      Axios.get("https://apimi5a.vercel.app/fakultas")
+      Axios.get("https://apimi5a.vercel.app/prodi")
         .then((res)=>{
-            setfakultas(res.data)
+            setprodi(res.data)
             console.log(res.data);
         })
 
@@ -18,17 +18,19 @@ const List=()=>{
 
     return(
         <>
-        <h2>Halaman List Fakultas</h2>
+        <h2>Halaman List prodi</h2>
             <table className="table table-strip">
                 <thead>
                     <tr>
-                        <th>Nama Fakultas</th>
+                        <th>Nama prodi</th>
+                        <th>Nama fakultas</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {fakultas && fakultas.map((fakultas,index)=>{
+                    {prodi && prodi.map((prodi,index)=>{
                         return(<tr>
-                            <td>{fakultas.nama}</td>
+                            <td>{prodi.nama}</td>
+                            <td>{prodi.fakultas.nama}</td>
                         </tr>)
                     })}
                 </tbody>

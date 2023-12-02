@@ -24,7 +24,7 @@ function App() {
           </NavLink>
         </li>
         <li class="nav-item me-3">
-          <NavLink to={"#"} className={"nav-link"}>
+          <NavLink to={"/prodi"} className={"nav-link"}>
             Prodi
           </NavLink>
         </li>
