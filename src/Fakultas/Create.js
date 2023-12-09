@@ -12,13 +12,12 @@ const Create=()=>{
         setfakultas({...fakultas, [name]:value})
     }
 
-    const handleSubmit=(e)=>{
-        e.preventdefault()
+    const handleSubmit= async (e) =>{
+        e.preventDefault()
 
         try {
             Axios.post("https://apimi5a.vercel.app/fakultas", fakultas)
             .then((res)=>{
-                alert('fakultas berhasil disimpan')
                 navigate("/fakultas")
             })
         } catch (error) {
