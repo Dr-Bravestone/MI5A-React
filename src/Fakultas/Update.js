@@ -11,6 +11,19 @@ const Update=()=>{
         const value = e.target.value
         setfakultas({...fakultas, [name]:value})
     }
+    const handleSubmit= async (e) =>{
+        e.preventDefault()
+
+        try {
+            Axios.put("https://apimi5a.vercel.app/fakultas", fakultas)
+            .then((res)=>{
+                navigate("/fakultas")
+            })
+        } catch (error) {
+            alert(error)
+            
+        }
+    }
     useEffect(()=>{
         const getFakultas=async()=>{
             try{
@@ -32,7 +45,7 @@ const Update=()=>{
         <h2>Halaman Update</h2>
         <form>
             <input type="text" value={fakultas.nama} onChange={(e)=>handleChange(e,"nama")} className="form-control" placeholder="Input nama"/>
-            <button  className="btn btn-primary">Simpan</button>
+            <button onClick={handleSubmit} className="btn btn-primary">Simpan</button>
             <button className="btn btn-sm btn-light" onClick={()=>navigate("/fakultas")}>Kembali</button>
         </form>
         </>
